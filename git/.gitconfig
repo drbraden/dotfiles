@@ -1,0 +1,26 @@
+[user]
+  name = Doug
+  email = dougrbraden@gmail.com
+
+[alias]
+  st = status -sb
+  ci = commit
+  br = branch
+  co = checkout
+  diff = diff --word-diff
+  df = diff
+  lg = log -p
+  oneline = log --pretty=oneline
+  br = branch
+  la = log --pretty=\"format:%ad %h (%an): %s\" --date=short
+  tree = log --oneline --graph --decorate --all
+  tree2 = log --oneline --graph --decorate --all --pretty=\"format:%ad %h (%an): %s\" --date=short --decorate
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  l = "!source ~/.githelpers && pretty_git_log"
+  la = !git l --all
+[color]
+  ui = true
+
+[core]
+  excludesfile = /Users/doug/.gitignore_global
+  editor = /usr/bin/vim
