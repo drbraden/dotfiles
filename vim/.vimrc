@@ -5,7 +5,7 @@ call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/seoul256.vim'
-Plug 'junegunn/vim-easy-align'
+" Plug 'junegunn/vim-easy-align'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-rails', { 'on': 'NERDTreeToggle' }
@@ -45,11 +45,19 @@ set nolazyredraw
 " output can be easily removed with a single key ("u" to undo).
 map ,r :w<CR>Go<ESC>:.!ruby %<CR>
 
-" Switch windows by using regular movement keys prefaced by Ctrl
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-H> <C-W>h
-map <C-L> <C-W>l
+" Move lines up and down using alt-j & alt-k
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+
+" " Switch windows by using regular movement keys prefaced by Ctrl
+" map <C-J> <C-W>j
+" map <C-K> <C-W>k
+" map <C-H> <C-W>h
+" map <C-L> <C-W>l
 
 " Settings for CtrlP
 let g:ctrlp_clear_cache_on_exit=0
@@ -132,8 +140,9 @@ set tabstop=4
 set expandtab " expand tabs to spaces
 set nosmarttab " fuck tabs
 set formatoptions+=n " support for numbered/bullet lists
-set textwidth=76 " wrap at 76 chars by default
-set virtualedit=block " allow virtual edit in visual block ..
+set textwidth=0 " don't auto wrap lines, it's annoying when coding
+set wrapmargin=0 " don't auto wrap when approaching margins either
+set virtualedit=block " allow virtual edit in visual block
 
 " ----------------------------------------------------------------------------
 " Mappings
